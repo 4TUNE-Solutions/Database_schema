@@ -1,2 +1,8 @@
 # Database_schema
-DB Schema - MySQL
+
+## Tools used:
+
+- https://dbdiagram.io/home
+
+
+- https://sqldbm.com/home
