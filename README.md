@@ -1,5 +1,3 @@
-# Database_schema
-
 ## Main design:
 
 - https://dbdiagram.io/d/5fe0b0929a6c525a03bbddcb
