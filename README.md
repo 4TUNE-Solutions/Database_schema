@@ -22,12 +22,12 @@
 
 <br/>
 
-- **GL_article_list** -  all articles present in the retail system
-- **GL_shop_list** - all retail shops consisting inside company that is using software
+- **GL_article_list** -  articles present in the retail system
+- **GL_shop_list** - retail shops consisting inside company that is using software
 - **GL_article_group** - grouping articles for the sake of easier internal organization
 - **GL_corpo_buyers_list** - *shop client* companies 
 - **GL_access_level_accounts** - contains various information about users, admins and workers
-- **GL_retail_costs** - consists of all costs retail may come across (electrical power, water, internet, supplier invoices)
+- **GL_retail_costs** - consists of costs retail may come across (electrical power, water, internet, supplier invoices)
 
 <hr>
 <br />
