@@ -9,9 +9,7 @@
 - invertory
 - store
 
-#### `Global tables`
-
-**EVERY TABLE IN GLOBAL SCOPE HAS SUFIX 'GL_'**
+#### `Global tables - EVERY TABLE IN GLOBAL SCOPE HAS SUFIX 'GL_'`
 
 | Table Name | Primary Key(s) | Foreign key(s) |
 | ----------- | ----------- | ----------- |
@@ -22,9 +20,7 @@
 | access_level_accounts | / | / |
 | retail_costs | / | / |
 
-#### `Invertory tables`
-
-**EVERY TABLE IN GLOBAL SCOPE HAS SUFIX 'INV_'**
+#### `Invertory tables - EVERY TABLE IN INVERTORY SCOPE HAS SUFIX 'INV_'`
 
 | Table Name | Primary Key(s) | Foreign key(s) |
 | ----------- | ----------- | ----------- |
@@ -33,9 +29,7 @@
 | sent_goods | / | / |
 | suppliers_list | / | / |
 
-#### `Global tables`
-
-**EVERY TABLE IN GLOBAL SCOPE HAS SUFIX 'SR_'**
+#### `Global tables - EVERY TABLE IN SHOP SCOPE HAS SUFIX 'SR_'`
 
 | Table Name | Primary Key(s) | Foreign key(s) |
 | ----------- | ----------- | ----------- |
