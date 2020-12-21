@@ -20,6 +20,8 @@
 | access_level_accounts | / | / |
 | retail_costs | / | / |
 
+<br/>
+
 - **GL_article_list** -  list of all articles present in the retail system
 - **GL_shop_list** - list of all retail shops consisting inside company that is using software
 - **GL_article_group** - grouping articles for the sake of easier internal organization
@@ -27,6 +29,7 @@
 - **GL_access_level_accounts** - contains various information about users, admins and workers
 - **GL_retail_costs** - consists of all costs retail may come across (electrical power, water, internet, supplier invoices)
 
+<hr>
 <br />
 
 #### `Invertory tables - EVERY TABLE IN INVERTORY SCOPE HAS PREFIX 'INV_'`
@@ -38,11 +41,14 @@
 | sent_goods | / | / |
 | suppliers_list | / | / |
 
+<br/>
+
 - **INV_state** - all items/goods present in invertory
 - **INV_procurement** - every procurement request
 - **INV_sent_goods** - contains information about sending goods from inventory to store(s)
 - **INV_suppliers_list** - contains information about all suppliers
 
+<hr>
 <br />
 
 #### `Global tables - EVERY TABLE IN SHOP SCOPE HAS PREFIX 'SR_'`
@@ -58,6 +64,8 @@
 | corpo_fiscal_bill | / | / |.
 | crde_cards_info | / | / |
 
+<br/>
+
 - **SR_state** - all items/goods present in shop/market
 - **SR_fiscal_bills** - contains information about fiscal billing
 - **SR_sold_goods** - contains information about goods sold
@@ -66,3 +74,6 @@
 - **SR_corpo_sell_invoice** - contains information about selling items to companies over invoices
 - **SR_corpo_fiscal_bill** - contains information about selling items to companies over cash (fiscal bills)
 - **SR_crde_cards_info** - contains information about all *credit* and *debit* cards used to purchase items/goods
+
+<hr>
+<br/>
