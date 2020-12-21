@@ -81,6 +81,8 @@
 
 # Table description
 
+## Global tables
+
 `GL_article_list`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
