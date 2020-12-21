@@ -1,3 +1,4 @@
+
 ## Main design:
 
 - https://dbdiagram.io/d/5fe0b0929a6c525a03bbddcb
@@ -12,7 +13,7 @@
 #### `Global tables - EVERY TABLE IN GLOBAL SCOPE HAS PREFIX 'GL_'`
 
 | Table Name | Primary Key(s) | Foreign key(s) |
-| ----------- | ----------- | ----------- |
+| :-----------: | :-----------: | :-----------: |
 | article_list | / | / |
 | shop_list | / | / |
 | article_group | / | / |
@@ -35,7 +36,7 @@
 #### `Invertory tables - EVERY TABLE IN INVERTORY SCOPE HAS PREFIX 'INV_'`
 
 | Table Name | Primary Key(s) | Foreign key(s) |
-| ----------- | ----------- | ----------- |
+| :-----------: | :-----------: | :-----------: |
 | state | / | / |
 | procurement | / | / |
 | sent_goods | / | / |
@@ -54,7 +55,7 @@
 #### `Global tables - EVERY TABLE IN SHOP SCOPE HAS PREFIX 'SR_'`
 
 | Table Name | Primary Key(s) | Foreign key(s) |
-| ----------- | ----------- | ----------- |
+| :-----------: | :-----------: | :-----------: |
 | state | / | / |
 | fiscal_bills | / | / |
 | sold_goods | / | / |
@@ -77,3 +78,21 @@
 
 <hr>
 <br/>
+
+# Table description
+
+`GL_article_list`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| barcode*| varchar | ❌ | ❌ | ✅ | Barcode of an item, can be multiple referencing |
+| article_name| varchar | ❌ | ❌ | ❌ | Full article name |
+| group| int | ❌ | ✅ | ✅ | Grouping articles by certain filter |
+| measure_unit| varchar | ❌ | ❌ | ✅ | Measure unit of an item (kg, m...) |
+| tax_id| int | ❌ | ❌ | ❌ | Controls TAX % in cash register **(DEFAULT 0)** |
+| description| text | ❌ | ❌ | ✅ | Description of an article |
+| article_note| text | ❌ | ❌ | ✅ | Additional info about product |
+| exp_date| date | ❌ | ❌ | ✅ | Expiration date of an article |
+| supplier_id| int | ❌ | ✅ | ✅ | Unique identification value for suppliers  |
+| service| boolean | ❌ | ❌ | ❌ | Either service or selling point |
