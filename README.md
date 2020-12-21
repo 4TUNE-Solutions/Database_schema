@@ -121,3 +121,21 @@
 | closing_hours| time | ❌ | ❌ | ✅ | Defines closing hours |
 | working | boolean | ❌ | ❌ | ❌ | Defines if place is open or not |
 
+`GL_article_group`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| group_name| varchar | ❌ | ✅ | ❌ | Name of the group |
+| group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
+
+`GL_article_sub_group`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| group_id | int | ❌ | ✅ | ❌ | Referencing group it belongs to |
+| sub_group_id | int | ❌ | ✅ | ✅ | OPTIONAL: If sub-group belongs to another sub-group |
+| sub_group_name| varchar | ❌ | ❌ | ❌ | Name of the sub-group |
+| sub_group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
+
