@@ -4,10 +4,14 @@
 
 - https://dbdiagram.io/d/5fe0b0929a6c525a03bbddcb
 
+<br />
+
 ### Table segments:
 - global
 - invertory
 - store
+
+<br />
 
 #### `Global tables - EVERY TABLE IN GLOBAL SCOPE HAS SUFIX 'GL_'`
 
@@ -20,6 +24,8 @@
 | access_level_accounts | / | / |
 | retail_costs | / | / |
 
+<br />
+
 #### `Invertory tables - EVERY TABLE IN INVERTORY SCOPE HAS SUFIX 'INV_'`
 
 | Table Name | Primary Key(s) | Foreign key(s) |
@@ -28,6 +34,8 @@
 | procurement | / | / |
 | sent_goods | / | / |
 | suppliers_list | / | / |
+
+<br />
 
 #### `Global tables - EVERY TABLE IN SHOP SCOPE HAS SUFIX 'SR_'`
 
@@ -41,3 +49,5 @@
 | corpo_sell_invoice | / | / |
 | corpo_fiscal_bill | / | / |.
 | crde_cards_info | / | / |
+
+</center>
