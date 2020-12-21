@@ -14,12 +14,15 @@
 
 | Table Name | Primary Key(s) | Foreign key(s) |
 | :-----------: | :-----------: | :-----------: |
-| article_list | / | / |
-| shops_list | / | / |
-| article_group | / | / |
-| corpo_buyers_list | / | / |
-| access_level_accounts | / | / |
-| retail_costs | / | / |
+| article_list | id | group, suplier_id |
+| shops_list | id | / |
+| working_hours | id | shop_id |
+| article_group | id | group_name |
+| article_sub_group | id | group_id, sub_group_id |
+| corpo_buyers_list | id | / |
+| access_level_accounts | id | / |
+| retail_costs | id | shop_id, type_of_pay |
+| retail_costs_types | id | / |
 
 <br/>
 
@@ -52,7 +55,7 @@
 <hr>
 <br />
 
-#### `Global tables - EVERY TABLE IN SHOP SCOPE HAS PREFIX 'SR_'`
+#### `Shops tables - EVERY TABLE IN SHOP SCOPE HAS PREFIX 'SR_'`
 
 | Table Name | Primary Key(s) | Foreign key(s) |
 | :-----------: | :-----------: | :-----------: |
