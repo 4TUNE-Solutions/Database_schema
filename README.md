@@ -139,3 +139,57 @@
 | sub_group_name| varchar | ❌ | ❌ | ❌ | Name of the sub-group |
 | sub_group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
 
+`GL_corpo_buyers_list`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| name| varchar | ❌ | ❌ | ❌ | Name of company |
+| address| varchar | ❌ | ❌ | ✅ | Address of company |
+| city| varchar| ❌ | ❌ | ✅ | City where company is located |
+| postal_code| varchar | ❌ | ❌ | ✅ | Postal code for company |
+| email| varchar| ❌ | ❌ | ✅ | Email address for company |
+| telephone| varchar | ❌ | ❌ | ✅ | Mobile number for company |
+| mobile| varchar | ❌ | ❌ | ✅ | Mobile number for company |
+| fax | varchar | ❌ | ❌ | ✅ | Fax number for company |
+| website | varchar | ❌ | ❌ | ✅ | Website of the company |
+| contact_person | varchar | ❌ | ❌ | ✅ | Company's contact person |
+| bank_account_number* | varchar | ❌ | ❌ | ✅ | Company's bank account number |
+| TIN | varchar | ❌ | ❌ | ❌ | TAX Identification Number (PIB) |
+| UCID | varchar | ❌ | ❌ | ❌ | Unique Company Identification Number (MB) |
+| taxpayer | boolean | ❌ | ❌ | ❌ | Wether company is in tax system |
+
+`GL_access_level_accounts`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| worker_name | varchar | ❌ | ❌ | ✅ | Worker's full name |
+| visible_name | varchar | ❌ | ❌ | ❌ | Nickname in software |
+| username | varchar | ❌ | ❌ | ❌ | Worker's username, LOGIN |
+| password | varchar | ❌ | ❌ | ❌ | Worker's password, LOGIN |
+| is_admin | boolean | ❌ | ❌ | ❌ | Defines if user has admin privileges |
+| is_manager | boolean | ❌ | ❌ | ❌ | Defines if user has manager privileges |
+
+`GL_retail_costs`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| shop_id | int | ❌ | ✅ | ❌ | Reference to shop/workplace |
+| type_of_pay | int | ❌ | ✅ | ❌ | Type of bill, references to bill type |
+| issuance_day | date | ❌ | ❌ | ❌ | Day of bill issuance |
+| due_month | int | ❌ | ❌ | ❌ | Month of debt towards issuer |
+| due_year | int | ❌ | ❌ | ❌ | Year of debt towards issuer |
+| cost | double | ❌ | ❌ | ❌ | Amount of due money on bill |
+| payment_code | int | ❌ | ❌ | ✅ | Payment code |
+| reference_number | varchar | ❌ | ❌ | ✅ | Unique number connecting payer and issuer |
+| payer_name | varchar | ❌ | ❌ | ❌ | Name of payer |
+
+`GL_retail_costs_types`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| service_name | varchar | ❌ | ❌ | ❌ | Name of the service that bill is referencing to |
+| service_bank_account_number | varchar | ❌ | ❌ | ✅ | Bank account of bill issuer |
