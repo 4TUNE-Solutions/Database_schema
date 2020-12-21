@@ -22,10 +22,10 @@
 
 <br/>
 
-- **GL_article_list** -  list of all articles present in the retail system
-- **GL_shop_list** - list of all retail shops consisting inside company that is using software
+- **GL_article_list** -  all articles present in the retail system
+- **GL_shop_list** - all retail shops consisting inside company that is using software
 - **GL_article_group** - grouping articles for the sake of easier internal organization
-- **GL_corpo_buyers_list** - list of other *shop client* companies 
+- **GL_corpo_buyers_list** - *shop client* companies 
 - **GL_access_level_accounts** - contains various information about users, admins and workers
 - **GL_retail_costs** - consists of all costs retail may come across (electrical power, water, internet, supplier invoices)
 
@@ -43,7 +43,7 @@
 
 <br/>
 
-- **INV_state** - all items/goods present in invertory
+- **INV_state** - items/goods present in invertory
 - **INV_procurement** - every procurement request
 - **INV_sent_goods** - contains information about sending goods from inventory to store(s)
 - **INV_suppliers_list** - contains information about all suppliers
@@ -66,7 +66,7 @@
 
 <br/>
 
-- **SR_state** - all items/goods present in shop/market
+- **SR_state** - items/goods present in shop/market
 - **SR_fiscal_bills** - contains information about fiscal billing
 - **SR_sold_goods** - contains information about goods sold
 - **SR_need_order** - contains information about need order to the inventory (shortage of items in shop)
