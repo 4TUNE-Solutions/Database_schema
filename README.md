@@ -1,8 +1,5 @@
 # Database_schema
 
-## Tools used:
+## Main design:
 
-- https://dbdiagram.io/home
-
-
-- https://sqldbm.com/home
+- https://dbdiagram.io/d/5fe08d4a9a6c525a03bbd7d3
