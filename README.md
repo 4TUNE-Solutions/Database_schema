@@ -15,7 +15,7 @@
 | Table Name | Primary Key(s) | Foreign key(s) |
 | :-----------: | :-----------: | :-----------: |
 | article_list | / | / |
-| shop_list | / | / |
+| shops_list | / | / |
 | article_group | / | / |
 | corpo_buyers_list | / | / |
 | access_level_accounts | / | / |
@@ -24,7 +24,7 @@
 <br/>
 
 - **GL_article_list** -  articles present in the retail system
-- **GL_shop_list** - retail shops consisting inside company that is using software
+- **GL_shops_list** - retail shops consisting inside company that is using software
 - **GL_article_group** - grouping articles for the sake of easier internal organization
 - **GL_corpo_buyers_list** - *shop client* companies 
 - **GL_access_level_accounts** - contains various information about users, admins and workers
@@ -96,3 +96,28 @@
 | exp_date| date | ❌ | ❌ | ✅ | Expiration date of an article |
 | supplier_id| int | ❌ | ✅ | ✅ | Unique identification value for suppliers  |
 | service| boolean | ❌ | ❌ | ❌ | Either service or selling point |
+
+`GL_shops_list`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| name| varchar | ❌ | ❌ | ❌ | Name of workplace |
+| address| varchar | ❌ | ❌ | ✅ | Address of workplace |
+| city| varchar| ❌ | ❌ | ✅ | City where workplace is located |
+| postal_code| varchar | ❌ | ❌ | ✅ | Postal code for workplace |
+| email| varchar| ❌ | ❌ | ✅ | Email address for workplace |
+| mobile*| varchar | ❌ | ❌ | ✅ | Mobile number for workplace |
+| operating| boolean | ❌ | ❌ | ❌ | Shop working or not |
+
+`GL_working_hours`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| shop_id| int | ❌ | ✅ | ❌ | Connecting shop with daily working hours |
+| day| varchar | ❌ | ❌ | ❌ | Day in a week |
+| opening_hours| time| ❌ | ❌ | ✅ | Defines starting hours |
+| closing_hours| time | ❌ | ❌ | ✅ | Defines closing hours |
+| working | boolean | ❌ | ❌ | ❌ | Defines if place is open or not |
+
