@@ -45,16 +45,20 @@
 
 | Table Name | Primary Key(s) | Foreign key(s) |
 | :-----------: | :-----------: | :-----------: |
-| state | / | / |
-| procurement | / | / |
-| sent_goods | / | / |
-| suppliers_list | / | / |
+| state | id | article_id |
+| procurement | id | supplier_id, inventory_id |
+| procurement_items | id | procurement_id, article_id |
+| delivery | id | shop_id, inventory_id |
+| delivery_items | id | shop_id, article_id |
+| suppliers_list | id | / |
 
 <br/>
 
 - **INV_state** - items/goods present in invertory
 - **INV_procurement** - every procurement request
-- **INV_sent_goods** - contains information about sending goods from inventory to store(s)
+- **INV_procurement_items** - procurement list of items
+- **INV_delivery** - contains information about sending goods from inventory to store(s)
+- **INV_delivery_items** - delivery list of articles
 - **INV_suppliers_list** - contains information about all suppliers
 
 <hr>
@@ -64,25 +68,25 @@
 
 | Table Name | Primary Key(s) | Foreign key(s) |
 | :-----------: | :-----------: | :-----------: |
-| state | / | / |
-| fiscal_bills | / | / |
-| sold_goods | / | / |
-| need_order | / | / |
-| need_order_items | / | / |
-| corpo_sell_invoice | / | / |
-| corpo_fiscal_bill | / | / |.
-| crde_cards_info | / | / |
+| state | id | shop_id, article_id |
+| fiscal_bills | id | worker_id, shop_id, buyer_id |
+| sold_goods | id | fiscal_bill_id, article_id |
+| order_request | id | inventory_id, shop_id |
+| order_request_items | id | request_id, article_id |
+| corpo_sell_invoice | id | corpo_id, worker_id, shop_id |
+| invoice_sold_items | id | invoice_id, article_id |
+| corpo_fiscal_bill | id | corpo_id, shop_id, fiscal_bill_id |.
 
 <br/>
 
 - **RT_state** - items/goods present in shop/market
 - **RT_fiscal_bills** - contains information about fiscal billing
 - **RT_sold_goods** - contains information about goods sold
-- **RT_need_order** - contains information about need order to the inventory (shortage of items in shop)
-- **RT_need_order_items** - contains information about items needed in shop (related to **RT_need_order**)
+- **RT_order_request** - contains information about need order to the inventory (shortage of items in shop)
+- **RT_order_request_items** - contains information about items needed in shop (related to **RT_need_order**)
 - **RT_corpo_sell_invoice** - contains information about selling items to companies over invoices
+- **RT_invoice_sold_items** - list of items sold over invoice
 - **RT_corpo_fiscal_bill** - contains information about selling items to companies over cash (fiscal bills)
-- **RT_crde_cards_info** - contains information about all *credit* and *debit* cards used to purchase items/goods
 
 <hr>
 <br/>
@@ -332,7 +336,7 @@
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
 | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
 | id | int | ✅ | ❌ | ❌ | Auto-increment value |
-| fiscall_bill_id | int | ❌ | ✅ | ❌ | Reference to bill |
+| fiscal_bill_id | int | ❌ | ✅ | ❌ | Reference to bill |
 | article_id | int | ❌ | ✅ | ❌ | Reference to the article |
 | amount | double | ❌ | ❌ | ❌ | Amount of article sold |
 | article_cost | double | ❌ | ❌ | ❌ | Cost of article (after discount, if applicable) |
@@ -349,7 +353,7 @@
 | creation_date | date | ❌ | ❌ | ✅ | Date order has been created |
 | realized | bool | ❌ | ❌ | ❌ | If order request is ready or still in progress |
 
-`RT_order_request`
+`RT_order_request_items`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
 | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
@@ -395,5 +399,5 @@
 | id | int | ✅ | ❌ | ❌ | Auto-increment value |
 | corpo_id | int | ❌ | ✅ | ❌ | Referencing company |
 | shop_id | int | ❌ | ✅ | ❌ | Referencing shop |
-| fiscall_bill_id | int | ❌ | ✅ | ❌ | Referencing issued bill |
+| fiscal_bill_id | int | ❌ | ✅ | ❌ | Referencing issued bill |
 | date_time_issued | datetime | ❌ | ❌ | ❌ | Date and time cash bill was issued |
