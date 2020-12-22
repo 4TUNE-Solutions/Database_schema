@@ -402,3 +402,5 @@
 | shop_id | int | ❌ | ✅ | ❌ | Referencing shop |
 | fiscal_bill_id | int | ❌ | ✅ | ❌ | Referencing issued bill |
 | date_time_issued | datetime | ❌ | ❌ | ❌ | Date and time cash bill was issued |
+
+<img src="https://i.ibb.co/QHYCMXv/Copy-of-Copy-of-null.png" alt="Copy-of-Copy-of-null" border="0">
