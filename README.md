@@ -1,6 +1,6 @@
 ## Main design:
 
-- https://dbdiagram.io/d/5fe0b0929a6c525a03bbddcb
+- https://dbdiagram.io/d/5fe245a59a6c525a03bc0703
 <br />
 
 ### Table segments:
