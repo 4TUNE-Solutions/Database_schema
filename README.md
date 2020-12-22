@@ -1,4 +1,3 @@
-
 ## Main design:
 
 - https://dbdiagram.io/d/5fe0b0929a6c525a03bbddcb
@@ -16,6 +15,7 @@
 | :-----------: | :-----------: | :-----------: |
 | article_list | id | group, suplier_id |
 | shops_list | id | / |
+| inventory_list | id | / |
 | working_hours | id | shop_id |
 | article_group | id | group_name |
 | article_sub_group | id | group_id, sub_group_id |
@@ -28,10 +28,14 @@
 
 - **GL_article_list** -  articles present in the retail system
 - **GL_shops_list** - retail shops consisting inside company that is using software
+- **GL_inventory_list** - inventories consisting inside company that is using software
+- **GL_working_hours** - shop working hours 
 - **GL_article_group** - grouping articles for the sake of easier internal organization
+- **GL_article_sub_group** - another level of grouping (related article group) 
 - **GL_corpo_buyers_list** - *shop client* companies 
 - **GL_access_level_accounts** - contains various information about users, admins and workers
-- **GL_retail_costs** - consists of costs retail may come across (electrical power, water, internet, supplier invoices)
+- **GL_retail_costs** - consists of costs (bills ,invoices) retail may come across 
+- **GL_retail_costs_types** - types of retail costs (electrical power, water, internet, supplier invoices)
 
 <hr>
 <br />
@@ -93,16 +97,29 @@
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 | barcode*| varchar | ❌ | ❌ | ✅ | Barcode of an item, can be multiple referencing |
 | article_name| varchar | ❌ | ❌ | ❌ | Full article name |
-| group| int | ❌ | ✅ | ✅ | Grouping articles by certain filter |
+| group| int | ❌ | ✅ | ✅ | Grouping articles by certain filter ,(Reference to group) |
 | measure_unit| varchar | ❌ | ❌ | ✅ | Measure unit of an item (kg, m...) |
 | tax_id| int | ❌ | ❌ | ❌ | Controls TAX % in cash register **(DEFAULT 0)** |
 | description| text | ❌ | ❌ | ✅ | Description of an article |
 | article_note| text | ❌ | ❌ | ✅ | Additional info about product |
 | exp_date| date | ❌ | ❌ | ✅ | Expiration date of an article |
-| supplier_id| int | ❌ | ✅ | ✅ | Unique identification value for suppliers  |
+| supplier_id| int | ❌ | ✅ | ✅ | Unique identification value for suppliers , (Reference to supplier) |
 | service| boolean | ❌ | ❌ | ❌ | Either service or selling point |
 
 `GL_shops_list`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| name| varchar | ❌ | ❌ | ❌ | Name of workplace |
+| address| varchar | ❌ | ❌ | ✅ | Address of workplace |
+| city| varchar| ❌ | ❌ | ✅ | City where workplace is located |
+| postal_code| varchar | ❌ | ❌ | ✅ | Postal code for workplace |
+| email| varchar| ❌ | ❌ | ✅ | Email address for workplace |
+| mobile*| varchar | ❌ | ❌ | ✅ | Mobile number for workplace |
+| operating| boolean | ❌ | ❌ | ❌ | Shop working or not |
+
+`GL_inventory_list`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
 | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
@@ -120,7 +137,7 @@
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
 | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
-| shop_id| int | ❌ | ✅ | ❌ | Connecting shop with daily working hours |
+| shop_id| int | ❌ | ✅ | ❌ | Reference to working hours |
 | day| varchar | ❌ | ❌ | ❌ | Day in a week |
 | opening_hours| time| ❌ | ❌ | ✅ | Defines starting hours |
 | closing_hours| time | ❌ | ❌ | ✅ | Defines closing hours |
@@ -131,7 +148,7 @@
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
 | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
-| group_name| varchar | ❌ | ✅ | ❌ | Name of the group |
+| group_name| varchar | ❌ | ✅ | ❌ | Referencing name of the group |
 | group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
 
 `GL_article_sub_group`
@@ -198,3 +215,52 @@
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 | service_name | varchar | ❌ | ❌ | ❌ | Name of the service that bill is referencing to |
 | service_bank_account_number | varchar | ❌ | ❌ | ✅ | Bank account of bill issuer |
+
+`INV_state`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| article_id | int | ❌ | ✅ | ❌ | The reference to article |
+|count_number | decimal | ❌ | ❌ | ❌  | Amount of specific article in inventory |
+|purchase_price| decimal | ❌ | ❌ | ❌  | The price for which is that article paid |
+|selling_margin| decimal | ❌ | ❌ | ❌ | The percent that increases the price of specific article |
+
+`INV_procurement`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| suplier_id| int | ❌ | ✅ | ❌ | The reference to supplier |
+|inventory_id| int| ❌ | ✅ | ❌  | The reference to specific inventory  |
+|creation_date| date| ❌ | ❌ | ❌  | Date when we created procurement |
+
+`INV_procurement_items`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+|procurement_id| int | ❌ | ✅ | ❌ | The reference to procurement |
+|article_id| int| ❌ | ✅ | ❌  | The reference to specific article  |
+|amount_number| date| ❌ | ❌ | ❌  | Order Amount |
+
+`INV_delivery`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+|shop_id| int | ❌ | ✅ | ❌ | The reference to procurement |
+|delivery_date| date | ❌ | ❌ | ❌  | Date when will be delivered |
+
+`INV_delivery_items`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+|shop_id| int | ❌ | ✅ | ❌ | The reference to procurement |
+|article_id| int| ❌ | ✅ | ❌  | Date when will be delivered |
+|inventory_id| int| ❌ | ✅ | ❌  | Referencing to inventory |
+|amount_number| decimal | ❌ | ❌ | ❌  | Delivery amount  |
+
+
+
