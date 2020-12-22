@@ -106,6 +106,7 @@
 | exp_date| date | ❌ | ❌ | ✅ | Expiration date of an article |
 | supplier_id| int | ❌ | ✅ | ✅ | Unique identification value for suppliers , (Reference to supplier) |
 | service| boolean | ❌ | ❌ | ❌ | Either service or selling point |
+| discount | int | ❌ | ❌ | ✅ | Article discount |
 
 `GL_shops_list`
 -
@@ -163,6 +164,15 @@
 | sub_group_name| varchar | ❌ | ❌ | ❌ | Name of the sub-group |
 | sub_group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
 | discount_amount| int | ❌ | ❌ | ✅ | Amount of discount on article price |
+
+`GL_article_grouping_connection`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| group_id| int | ❌ | ✅ | ✅ | Referencing group |
+| sub_group_id | int | ❌ | ✅ | ✅ | Referencing sub-group |
+| article_id | int | ❌ | ✅ | ❌ | Referencing article |
 
 `GL_corpo_buyers_list`
 -
@@ -284,4 +294,16 @@
 | TIN | varchar | ❌ | ❌ | ❌ | TAX Identification Number (PIB) |
 | UCID | varchar | ❌ | ❌ | ❌ | Unique Company Identification Number (MB) |
 | taxpayer | boolean | ❌ | ❌ | ❌ | Wether company is in tax system |
+
+`RT_state`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| shop_id | int | ❌ | ✅ | ❌ | Reference to shop |
+| article_id| int | ❌ | ✅ | ❌  | The reference to specific article  |
+| count_number | decimal | ❌ | ❌ | ❌ | Amount of present articles |
+| selling_price | decimal | ❌ | ❌ | ❌ | Price of article per unit |
+| discount | int | ❌ | ❌ | ✅ | Discount for article price (%) |
+| expiration_date | date | ❌ | ❌ | ✅ | Expiration date for article |
 
