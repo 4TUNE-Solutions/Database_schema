@@ -349,3 +349,51 @@
 | creation_date | date | ❌ | ❌ | ✅ | Date order has been created |
 | realized | bool | ❌ | ❌ | ❌ | If order request is ready or still in progress |
 
+`RT_order_request`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id | int | ✅ | ❌ | ❌ | Auto-increment value |
+| request_id | int | ❌ | ✅ | ❌ | Referencing request order |
+| article_id | int | ❌ | ✅ | ❌ | Referencing article |
+| amount_number | double | ❌ | ❌ | ❌ | Amount of article needed |
+
+`RT_corpo_sell_invoice`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| corpo_id | int | ❌ | ✅ | ❌ | Referencing company |
+| worker_id | int | ❌ | ✅ | ✅ | Worker which issued an invoice |
+| shop_id | int | ❌ | ✅ | ❌ | Shop which issued an invoice |
+| date_issued | date | ❌ | ❌ | ❌ | Date and time for issued invoice |
+| payment_dedline | date | ❌ | ❌ | ✅ | Date deadline for payment |
+| invoice_number | varchar | ❌ | ❌ | ❌ | Unique number for an invoice |
+| sum_cash | double | ❌ | ❌ | ✅ | Amount of invoice paid with cash |
+| sum_card | double | ❌ | ❌ | ✅ | Amount of invoice paid with a card |
+| final_sum | double | ❌ | ❌ | ❌ | Final amount on invoice |
+| TAX_amount | double | ❌ | ❌ | ❌ | Amount of money for TAX |
+| discount_amount | double | ❌ | ❌ | ✅ | Amount of money discounted |
+| invoice_paid | bool | ❌ | ❌ | ❌ | If company has paid invoice |
+
+`RT_invoice_sold_items`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id | int | ✅ | ❌ | ❌ | Auto-increment value |
+| invoice_id | int | ❌ | ✅ | ❌ | Reference to invoice |
+| article_id | int | ❌ | ✅ | ❌ | Reference to the article |
+| amount | double | ❌ | ❌ | ❌ | Amount of article sold |
+| article_cost | double | ❌ | ❌ | ❌ | Cost of article (after discount, if applicable) |
+| article_TAX | double | ❌ | ❌ | ❌ | Amount of TAX |
+| article_discount | double | ❌ | ❌ | ✅ | Amount of discount (in currency) |
+
+`RT_corpo_fiscal_bill`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id | int | ✅ | ❌ | ❌ | Auto-increment value |
+| corpo_id | int | ❌ | ✅ | ❌ | Referencing company |
+| shop_id | int | ❌ | ✅ | ❌ | Referencing shop |
+| fiscall_bill_id | int | ❌ | ✅ | ❌ | Referencing issued bill |
+| date_time_issued | datetime | ❌ | ❌ | ❌ | Date and time cash bill was issued |
