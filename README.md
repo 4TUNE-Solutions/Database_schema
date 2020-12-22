@@ -2,6 +2,11 @@
 ## Main design:
 
 - https://dbdiagram.io/d/5fe24dca9a6c525a03bc07c1
+<hr>
+
+[ <img src="https://i.ibb.co/QHYCMXv/Copy-of-Copy-of-null.png" alt="Copy-of-Copy-of-null" border="0"> ](https://ibb.co/KsVLWmx)
+
+<hr>
 <br />
 
 ### Table segments:
@@ -402,5 +407,3 @@
 | shop_id | int | ❌ | ✅ | ❌ | Referencing shop |
 | fiscal_bill_id | int | ❌ | ✅ | ❌ | Referencing issued bill |
 | date_time_issued | datetime | ❌ | ❌ | ❌ | Date and time cash bill was issued |
-
-[ <img src="https://i.ibb.co/QHYCMXv/Copy-of-Copy-of-null.png" alt="Copy-of-Copy-of-null" border="0"> ](https://ibb.co/KsVLWmx)
