@@ -235,9 +235,9 @@
 | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 | article_id | int | ❌ | ✅ | ❌ | The reference to article |
-|count_number | decimal | ❌ | ❌ | ❌  | Amount of specific article in inventory |
-|purchase_price| decimal | ❌ | ❌ | ❌  | The price for which is that article paid |
-|selling_margin| decimal | ❌ | ❌ | ❌ | The percent that increases the price of specific article |
+|count_number | double | ❌ | ❌ | ❌  | Amount of specific article in inventory |
+|purchase_price| double | ❌ | ❌ | ❌  | The price for which is that article paid |
+|selling_margin| double | ❌ | ❌ | ❌ | The percent that increases the price of specific article |
 
 `INV_procurement`
 -
@@ -245,8 +245,9 @@
 | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 | suplier_id| int | ❌ | ✅ | ❌ | The reference to supplier |
-|inventory_id| int| ❌ | ✅ | ❌  | The reference to specific inventory  |
-|creation_date| date| ❌ | ❌ | ❌  | Date when we created procurement |
+| inventory_id| int| ❌ | ✅ | ❌  | The reference to specific inventory  |
+| creation_date| date| ❌ | ❌ | ❌  | Date when we created procurement |
+| realized| bool | ❌ | ❌ | ❌  | If procurement is done or still filling |
 
 `INV_procurement_items`
 -
@@ -255,7 +256,7 @@
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 |procurement_id| int | ❌ | ✅ | ❌ | The reference to procurement |
 |article_id| int| ❌ | ✅ | ❌  | The reference to specific article  |
-|amount_number| decimal | ❌ | ❌ | ❌  | Order Amount |
+|amount_number| double | ❌ | ❌ | ❌  | Order Amount |
 
 `INV_delivery`
 -
@@ -263,7 +264,9 @@
 | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 |shop_id| int | ❌ | ✅ | ❌ | The reference to procurement |
+|inventory_id| int| ❌ | ✅ | ❌  | Referencing to inventory |
 |delivery_date| date | ❌ | ❌ | ❌  | Date when will be delivered |
+| realized| bool | ❌ | ❌ | ❌  | If delivery is done or still pending |
 
 `INV_delivery_items`
 -
@@ -272,8 +275,7 @@
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 |shop_id| int | ❌ | ✅ | ❌ | The reference to procurement |
 |article_id| int| ❌ | ✅ | ❌  | Date when will be delivered |
-|inventory_id| int| ❌ | ✅ | ❌  | Referencing to inventory |
-|amount_number| decimal | ❌ | ❌ | ❌  | Delivery amount  |
+|amount_number| double | ❌ | ❌ | ❌  | Delivery amount  |
 
 `INV_suppliers_list`
 -
@@ -302,8 +304,48 @@
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 | shop_id | int | ❌ | ✅ | ❌ | Reference to shop |
 | article_id| int | ❌ | ✅ | ❌  | The reference to specific article  |
-| count_number | decimal | ❌ | ❌ | ❌ | Amount of present articles |
-| selling_price | decimal | ❌ | ❌ | ❌ | Price of article per unit |
+| count_number | double | ❌ | ❌ | ❌ | Amount of present articles |
+| selling_price | double | ❌ | ❌ | ❌ | Price of article per unit |
 | discount | int | ❌ | ❌ | ✅ | Discount for article price (%) |
 | expiration_date | date | ❌ | ❌ | ✅ | Expiration date for article |
+
+`RT_fiscal_bills`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| worker_id | int | ❌ | ✅ | ✅ | Worker which issued a bill |
+| shop_id | int | ❌ | ✅ | ❌ | Shop which issued a bill |
+| buyer_id | int | ❌ | ✅ | ✅ | Referencing to corpo buyer |
+| reference_number | int | ❌ | ❌ | ❌ | Unique number for a bill |
+| sum_cash | double | ❌ | ❌ | ✅ | Amount of bill paid with cash |
+| sum_card | double | ❌ | ❌ | ✅ | Amount of bill paid with a card |
+| final_sum | double | ❌ | ❌ | ❌ | Final amount of a bill |
+| money_given | double | ❌ | ❌ | ❌ | Amount of money customer has given |
+| cash_back | double | ❌ | ❌ | ❌ | Difference between amount due and amount given  |
+| date_time_issued | datetime | ❌ | ❌ | ❌ | Date and time for issued bill |
+| TAX_amount | double | ❌ | ❌ | ❌ | Amount of money for TAX |
+| discount_amount | double | ❌ | ❌ | ✅ | Amount of money discounted |
+
+`RT_sold_goods`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id | int | ✅ | ❌ | ❌ | Auto-increment value |
+| fiscall_bill_id | int | ❌ | ✅ | ❌ | Reference to bill |
+| article_id | int | ❌ | ✅ | ❌ | Reference to the article |
+| amount | double | ❌ | ❌ | ❌ | Amount of article sold |
+| article_cost | double | ❌ | ❌ | ❌ | Cost of article (after discount, if applicable) |
+| article_TAX | double | ❌ | ❌ | ❌ | Amount of TAX |
+| article_discount | double | ❌ | ❌ | ✅ | Amount of discount (in currency) |
+
+`RT_order_request`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id | int | ✅ | ❌ | ❌ | Auto-increment value |
+| inventory_id | int | ❌ | ✅ | ❌ | Referencing to inventory delivering |
+| shop_id | int | ❌ | ✅ | ❌ | Referencing to shop ordering |
+| creation_date | date | ❌ | ❌ | ✅ | Date order has been created |
+| realized | bool | ❌ | ❌ | ❌ | If order request is ready or still in progress |
 
