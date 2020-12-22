@@ -112,6 +112,35 @@
 | service| boolean | ❌ | ❌ | ❌ | Either service or selling point |
 | discount | int | ❌ | ❌ | ✅ | Article discount |
 
+`GL_article_group`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| group_name| varchar | ❌ | ❌ | ❌ | Referencing name of the group |
+| group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
+| discount_amount| int | ❌ | ❌ | ✅ | Amount of discount on article price |
+
+`GL_article_sub_group`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| group_id | int | ❌ | ✅ | ❌ | Referencing group it belongs to |
+| sub_group_id | int | ❌ | ✅ | ✅ | OPTIONAL: If sub-group belongs to another sub-group |
+| sub_group_name| varchar | ❌ | ❌ | ❌ | Name of the sub-group |
+| sub_group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
+| discount_amount| int | ❌ | ❌ | ✅ | Amount of discount on article price |
+
+`GL_article_grouping_connection`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| group_id| int | ❌ | ✅ | ✅ | Referencing group |
+| sub_group_id | int | ❌ | ✅ | ✅ | Referencing sub-group |
+| article_id | int | ❌ | ✅ | ❌ | Referencing article |
+
 `GL_shops_list`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -148,35 +177,6 @@
 | opening_hours| time| ❌ | ❌ | ✅ | Defines starting hours |
 | closing_hours| time | ❌ | ❌ | ✅ | Defines closing hours |
 | working | boolean | ❌ | ❌ | ❌ | Defines if place is open or not |
-
-`GL_article_group`
--
-| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| id| int | ✅ | ❌ | ❌ | Auto-increment value |
-| group_name| varchar | ❌ | ✅ | ❌ | Referencing name of the group |
-| group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
-| discount_amount| int | ❌ | ❌ | ✅ | Amount of discount on article price |
-
-`GL_article_sub_group`
--
-| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| id| int | ✅ | ❌ | ❌ | Auto-increment value |
-| group_id | int | ❌ | ✅ | ❌ | Referencing group it belongs to |
-| sub_group_id | int | ❌ | ✅ | ✅ | OPTIONAL: If sub-group belongs to another sub-group |
-| sub_group_name| varchar | ❌ | ❌ | ❌ | Name of the sub-group |
-| sub_group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
-| discount_amount| int | ❌ | ❌ | ✅ | Amount of discount on article price |
-
-`GL_article_grouping_connection`
--
-| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| id| int | ✅ | ❌ | ❌ | Auto-increment value |
-| group_id| int | ❌ | ✅ | ✅ | Referencing group |
-| sub_group_id | int | ❌ | ✅ | ✅ | Referencing sub-group |
-| article_id | int | ❌ | ✅ | ❌ | Referencing article |
 
 `GL_corpo_buyers_list`
 -
