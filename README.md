@@ -1,3 +1,4 @@
+
 ## Main design:
 
 - https://dbdiagram.io/d/5fe245a59a6c525a03bc0703
@@ -59,7 +60,7 @@
 <hr>
 <br />
 
-#### `Shops tables - EVERY TABLE IN SHOP SCOPE HAS PREFIX 'SR_'`
+#### `Shops tables - EVERY TABLE IN SHOP SCOPE HAS PREFIX 'RT_'`
 
 | Table Name | Primary Key(s) | Foreign key(s) |
 | :-----------: | :-----------: | :-----------: |
@@ -74,14 +75,14 @@
 
 <br/>
 
-- **SR_state** - items/goods present in shop/market
-- **SR_fiscal_bills** - contains information about fiscal billing
-- **SR_sold_goods** - contains information about goods sold
-- **SR_need_order** - contains information about need order to the inventory (shortage of items in shop)
-- **SR_need_order_items** - contains information about items needed in shop (related to **SR_need_order**)
-- **SR_corpo_sell_invoice** - contains information about selling items to companies over invoices
-- **SR_corpo_fiscal_bill** - contains information about selling items to companies over cash (fiscal bills)
-- **SR_crde_cards_info** - contains information about all *credit* and *debit* cards used to purchase items/goods
+- **RT_state** - items/goods present in shop/market
+- **RT_fiscal_bills** - contains information about fiscal billing
+- **RT_sold_goods** - contains information about goods sold
+- **RT_need_order** - contains information about need order to the inventory (shortage of items in shop)
+- **RT_need_order_items** - contains information about items needed in shop (related to **RT_need_order**)
+- **RT_corpo_sell_invoice** - contains information about selling items to companies over invoices
+- **RT_corpo_fiscal_bill** - contains information about selling items to companies over cash (fiscal bills)
+- **RT_crde_cards_info** - contains information about all *credit* and *debit* cards used to purchase items/goods
 
 <hr>
 <br/>
@@ -150,6 +151,7 @@
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 | group_name| varchar | ❌ | ✅ | ❌ | Referencing name of the group |
 | group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
+| discount_amount| int | ❌ | ❌ | ✅ | Amount of discount on article price |
 
 `GL_article_sub_group`
 -
@@ -160,6 +162,7 @@
 | sub_group_id | int | ❌ | ✅ | ✅ | OPTIONAL: If sub-group belongs to another sub-group |
 | sub_group_name| varchar | ❌ | ❌ | ❌ | Name of the sub-group |
 | sub_group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
+| discount_amount| int | ❌ | ❌ | ✅ | Amount of discount on article price |
 
 `GL_corpo_buyers_list`
 -
@@ -262,5 +265,23 @@
 |inventory_id| int| ❌ | ✅ | ❌  | Referencing to inventory |
 |amount_number| decimal | ❌ | ❌ | ❌  | Delivery amount  |
 
-
+`INV_suppliers_list`
+-
+| Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+| id| int | ✅ | ❌ | ❌ | Auto-increment value |
+| name| varchar | ❌ | ❌ | ❌ | Name of company |
+| address| varchar | ❌ | ❌ | ✅ | Address of company |
+| city| varchar| ❌ | ❌ | ✅ | City where company is located |
+| postal_code| varchar | ❌ | ❌ | ✅ | Postal code for company |
+| email| varchar| ❌ | ❌ | ✅ | Email address for company |
+| telephone| varchar | ❌ | ❌ | ✅ | Mobile number for company |
+| mobile| varchar | ❌ | ❌ | ✅ | Mobile number for company |
+| fax | varchar | ❌ | ❌ | ✅ | Fax number for company |
+| website | varchar | ❌ | ❌ | ✅ | Website of the company |
+| contact_person | varchar | ❌ | ❌ | ✅ | Company's contact person |
+| bank_account_number* | varchar | ❌ | ❌ | ✅ | Company's bank account number |
+| TIN | varchar | ❌ | ❌ | ❌ | TAX Identification Number (PIB) |
+| UCID | varchar | ❌ | ❌ | ❌ | Unique Company Identification Number (MB) |
+| taxpayer | boolean | ❌ | ❌ | ❌ | Wether company is in tax system |
 
