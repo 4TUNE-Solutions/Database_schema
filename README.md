@@ -47,7 +47,7 @@
 
 | Table Name | Primary Key(s) | Foreign key(s) | Referring attribute
 | :-----------: | :-----------: | :-----------: | :-----------: |
-| state | id | GL_article_list.id | article_id |
+| state | id | GL_article_list.id<br/><br/>GL_inventory_list.id | article_id<br/><br/>inventory_id |
 | procurement | id | INV_suppliers_list.id<br/><br/>GL_inventory_list.id | supplier_id<br/><br/>inventory_id |
 | procurement_items | id | INV_procurement.id<br/><br/>GL_article_list.id | procurement_id<br/><br/>article_id |
 | delivery | id | GL_shops_list.id<br/><br/>GL_inventory_list.id | shop_id<br/><br/>inventory_id |
@@ -239,6 +239,7 @@
 | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 | article_id | int | ❌ | ✅ | ❌ | The reference to article |
+| inventory_id | int | ❌ | ✅ | ❌ | The reference to specific inventory|
 |count_number | double | ❌ | ❌ | ❌  | Amount of specific article in inventory |
 |purchase_price| double | ❌ | ❌ | ❌  | The price for which is that article paid |
 |selling_margin| double | ❌ | ❌ | ❌ | The percent that increases the price of specific article |
