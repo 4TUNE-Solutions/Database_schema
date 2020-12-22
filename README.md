@@ -15,16 +15,16 @@
 | Table Name | Primary Key(s) | Foreign key(s) | Referring attribute |
 | :-----------: | :-----------: | :-----------: | :-----------: |
 | article_list | id | INV_suppliers_list.id | supplier_id |
-| article_group | id | group_name |
-| article_sub_group | id | group_id, sub_group_id |
-| article_grouping_connection | id | group_id, sub_group_id, article_id |
-| shops_list | id | / |
-| inventory_list | id | / |
-| working_hours | id | shop_id |
-| corpo_buyers_list | id | / |
-| access_level_accounts | id | / |
-| retail_costs | id | shop_id, type_of_pay |
-| retail_costs_types | id | / |
+| article_group | id | / | / |
+| article_sub_group | id | GL_article_group.id<br/><br/>GL_article_sub_group.id | group_id<br/><br/>sub_group_id |
+| article_grouping_connection | id | GL_article_group.id<br/><br/>GL_article_sub_group.id<br/><br/>GL_article_list.id | group_id<br/><br/>sub_group_id<br/><br/>article_id |
+| shops_list | id | / | / |
+| inventory_list | id | / | / |
+| working_hours | id | GL_shops_list.id | shop_id |
+| corpo_buyers_list | id | / | / |
+| access_level_accounts | id | / | / |
+| retail_costs | id | GL_shops_list.id<br/><br/>GL_retail_costs_types.id | shop_id<br/><br/>type_of_pay |
+| retail_costs_types | id | / | / |
 
 <br/>
 
@@ -45,14 +45,14 @@
 
 #### `Invertory tables - EVERY TABLE IN INVERTORY SCOPE HAS PREFIX 'INV_'`
 
-| Table Name | Primary Key(s) | Foreign key(s) |
-| :-----------: | :-----------: | :-----------: |
-| state | id | article_id |
-| procurement | id | supplier_id, inventory_id |
-| procurement_items | id | procurement_id, article_id |
-| delivery | id | shop_id, inventory_id |
-| delivery_items | id | shop_id, article_id |
-| suppliers_list | id | / |
+| Table Name | Primary Key(s) | Foreign key(s) | Referring attribute
+| :-----------: | :-----------: | :-----------: | :-----------: |
+| state | id | GL_article_list.id | article_id |
+| procurement | id | INV_suppliers_list.id<br/><br/>GL_inventory_list.id | supplier_id<br/><br/>inventory_id |
+| procurement_items | id | INV_procurement.id<br/><br/>GL_article_list.id | procurement_id<br/><br/>article_id |
+| delivery | id | GL_shops_list.id<br/><br/>GL_inventory_list.id | shop_id<br/><br/>inventory_id |
+| delivery_items | id | GL_shops_list.id<br/><br/>GL_article_list.id | shop_id<br/><br/>article_id |
+| suppliers_list | id | / | / |
 
 <br/>
 
@@ -68,16 +68,16 @@
 
 #### `Shops tables - EVERY TABLE IN SHOP SCOPE HAS PREFIX 'RT_'`
 
-| Table Name | Primary Key(s) | Foreign key(s) |
-| :-----------: | :-----------: | :-----------: |
-| state | id | shop_id, article_id |
-| fiscal_bills | id | worker_id, shop_id, buyer_id |
-| sold_goods | id | fiscal_bill_id, article_id |
-| order_request | id | inventory_id, shop_id |
-| order_request_items | id | request_id, article_id |
-| corpo_sell_invoice | id | corpo_id, worker_id, shop_id |
-| invoice_sold_items | id | invoice_id, article_id |
-| corpo_fiscal_bill | id | corpo_id, shop_id, fiscal_bill_id |.
+| Table Name | Primary Key(s) | Foreign key(s) | Referring attribute
+| :-----------: | :-----------: | :-----------: | :-----------: |
+| state | id | GL_shops_list.id<br/><br/>GL_article_list.id | shop_id<br/><br/>article_id |
+| fiscal_bills | id | GL_access_level_accounts.id<br/><br/>GL_shops_list.id<br/><br/>GL_corpo_buyers_list.id | worker_id<br/><br/>shop_id<br/><br/>buyer_id |
+| sold_goods | id | RT_fiscal_bills.id<br/><br/>GL_article_list.id | fiscal_bill_id<br/><br/>article_id |
+| order_request | id | GL_inventory_list.id<br/><br/>GL_shops_list.id | inventory_id<br/><br/>shop_id |
+| order_request_items | id | RT_order_request.id<br/><br/>GL_article_list.id | request_id<br/><br/>article_id |
+| corpo_sell_invoice | id | GL_corpo_buyers_list.id<br/><br/>GL_access_level_accounts.id<br/><br/>GL_shops_list.id | corpo_id<br/><br/>worker_id<br/><br/>shop_id |
+| invoice_sold_items | id | RT_corpo_sell_invoice.id<br/><br/>GL_article_list.id | invoice_id<br/><br/>article_id |
+| corpo_fiscal_bill | id | GL_corpo_buyers_list.id<br/><br/>GL_shops_list.id<br/><br/>RT_fiscal_bills.id | corpo_id<br/><br/>shop_id<br/><br/>fiscal_bill_id |.
 
 <br/>
 
