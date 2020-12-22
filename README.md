@@ -12,14 +12,15 @@
 
 #### `Global tables - EVERY TABLE IN GLOBAL SCOPE HAS PREFIX 'GL_'`
 
-| Table Name | Primary Key(s) | Foreign key(s) |
-| :-----------: | :-----------: | :-----------: |
-| article_list | id | group, suplier_id |
+| Table Name | Primary Key(s) | Foreign key(s) | Referring attribute |
+| :-----------: | :-----------: | :-----------: | :-----------: |
+| article_list | id | GL_article_grouping_connection.id<br/><br/> INV_suppliers_list.id | group<br/><br/>supplier_id |
+| article_group | id | group_name |
+| article_sub_group | id | group_id, sub_group_id |
+| article_grouping_connection | id | group_id, sub_group_id, article_id |
 | shops_list | id | / |
 | inventory_list | id | / |
 | working_hours | id | shop_id |
-| article_group | id | group_name |
-| article_sub_group | id | group_id, sub_group_id |
 | corpo_buyers_list | id | / |
 | access_level_accounts | id | / |
 | retail_costs | id | shop_id, type_of_pay |
@@ -28,11 +29,12 @@
 <br/>
 
 - **GL_article_list** -  articles present in the retail system
+- **GL_article_group** - grouping articles for the sake of easier internal organization
+- **GL_article_sub_group** - another level of grouping (related article group) 
+- **GL_article_grouping_connection** - tracking connection between article and group
 - **GL_shops_list** - retail shops consisting inside company that is using software
 - **GL_inventory_list** - inventories consisting inside company that is using software
 - **GL_working_hours** - shop working hours 
-- **GL_article_group** - grouping articles for the sake of easier internal organization
-- **GL_article_sub_group** - another level of grouping (related article group) 
 - **GL_corpo_buyers_list** - *shop client* companies 
 - **GL_access_level_accounts** - contains various information about users, admins and workers
 - **GL_retail_costs** - consists of costs (bills ,invoices) retail may come across 
@@ -102,7 +104,10 @@
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 | barcode*| varchar | ❌ | ❌ | ✅ | Barcode of an item, can be multiple referencing |
 | article_name| varchar | ❌ | ❌ | ❌ | Full article name |
-| group| int | ❌ | ✅ | ✅ | Grouping articles by certain filter ,(Reference to group) |
+| group| int | ❌ | ✅ | ✅ | Grouping articles by certain filter ,(Reference to grouping connection) |
+| sub_group | int | ❌ | ✅ | ✅ | Grouping articles by certain filter ,(Reference to grouping connection) |
+| sub_group | int | ❌ | ✅ | ✅ | Grouping articles by certain filter ,(Reference to grouping connection) |
+| sub_group | int | ❌ | ✅ | ✅ | Grouping articles by certain filter ,(Reference to grouping connection) |
 | measure_unit| varchar | ❌ | ❌ | ✅ | Measure unit of an item (kg, m...) |
 | tax_id| int | ❌ | ❌ | ❌ | Controls TAX % in cash register **(DEFAULT 0)** |
 | description| text | ❌ | ❌ | ✅ | Description of an article |
