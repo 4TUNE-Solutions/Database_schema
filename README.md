@@ -1,7 +1,7 @@
 
 ## Main design:
 
-- https://dbdiagram.io/d/5fe245a59a6c525a03bc0703
+- https://dbdiagram.io/d/5fe24dca9a6c525a03bc07c1
 <br />
 
 ### Table segments:
