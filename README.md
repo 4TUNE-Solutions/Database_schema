@@ -14,7 +14,7 @@
 
 | Table Name | Primary Key(s) | Foreign key(s) | Referring attribute |
 | :-----------: | :-----------: | :-----------: | :-----------: |
-| article_list | id | GL_article_grouping_connection.id<br/><br/> INV_suppliers_list.id | group<br/><br/>supplier_id |
+| article_list | id | INV_suppliers_list.id | supplier_id |
 | article_group | id | group_name |
 | article_sub_group | id | group_id, sub_group_id |
 | article_grouping_connection | id | group_id, sub_group_id, article_id |
@@ -104,11 +104,6 @@
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 | barcode*| varchar | ❌ | ❌ | ✅ | Barcode of an item, can be multiple referencing |
 | article_name| varchar | ❌ | ❌ | ❌ | Full article name |
-| group| int | ❌ | ✅ | ✅ | Grouping articles by certain filter ,(Reference to grouping connection) |
-| sub_group | int | ❌ | ✅ | ✅ | Grouping articles by certain filter ,(Reference to grouping connection) |
-| sub_group | int | ❌ | ✅ | ✅ | Grouping articles by certain filter ,(Reference to grouping connection) |
-| sub_group | int | ❌ | ✅ | ✅ | Grouping articles by certain filter ,(Reference to grouping connection) |
-| measure_unit| varchar | ❌ | ❌ | ✅ | Measure unit of an item (kg, m...) |
 | tax_id| int | ❌ | ❌ | ❌ | Controls TAX % in cash register **(DEFAULT 0)** |
 | description| text | ❌ | ❌ | ✅ | Description of an article |
 | article_note| text | ❌ | ❌ | ✅ | Additional info about product |
