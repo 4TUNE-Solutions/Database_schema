@@ -7,9 +7,26 @@
 [ <img src="https://i.ibb.co/QHYCMXv/Copy-of-Copy-of-null.png" alt="Copy-of-Copy-of-null" border="0"> ](https://ibb.co/KsVLWmx)
 
 <hr>
-<br />
 
-### Table segments:
+
+# Table of contest
+
+ Global tables | Inventory tables | Retail stores tables |
+| :-----------: | :-----------: | :-----------: |
+| [article_list](#gl_article_list) | [state](#inv_state) | [state](#rt_state) |
+| [article_group](#gl_article_group)| [procurement](#inv_procurement) | [fiscal_bills](#rt_fiscal_bills) |
+| [article_sub_group](#gl_article_sub_group) | [procurement_items](#inv_procurement_items) | [sold_goods](#rt_sold_goods) |
+| [article_grouping_connection](#gl_article_grouping_connection) | [delivery](#inv_delivery) | [order_request](#rt_order_request) |
+| [shops_list](#gl_shops_list) | [delivery_items](#inv_delivery_items) | [order_request_items](#rt_order_request_items) |
+| [inventory_list](#gl_inventory_list) | [suppliers_list](#inv_suppliers_list) | [corpo_sell_invoice](#rt_corpo_sell_invoice) |
+| [working_hours](#gl_working_hours) |  | [invoice_sold_items](#rt_invoice_sold_items) |
+|  [corpo_buyers_list](#gl_corpo_buyers_list) |  | [corpo_fiscal_bill](#rt_corpo_fiscal_bill) |
+| [access_level_accounts](#gl_access_level_accounts) |  |  |
+| [retail_costs](#gl_retail_costs) |  |  |
+| [retail_costs_types](#gl_retail_costs_types) |  |  |
+
+
+## Table segments:
 - global
 - invertory
 - store
@@ -96,13 +113,10 @@
 - **RT_corpo_fiscal_bill** - contains information about selling items to companies over cash (fiscal bills)
 
 <hr>
-<br/>
 
-# Table description
+# Global tables
 
-## Global tables
-
-`GL_article_list`
+`GL_article_list` 
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
 | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
@@ -117,6 +131,8 @@
 | service| boolean | ❌ | ❌ | ❌ | Either service or selling point |
 | discount | int | ❌ | ❌ | ✅ | Article discount |
 
+*[Back to top](#table-of-contest)*
+
 `GL_article_group`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -125,6 +141,8 @@
 | group_name| varchar | ❌ | ❌ | ❌ | Referencing name of the group |
 | group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
 | discount_amount| int | ❌ | ❌ | ✅ | Amount of discount on article price |
+
+*[Back to top](#table-of-contest)*
 
 `GL_article_sub_group`
 -
@@ -137,6 +155,8 @@
 | sub_group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
 | discount_amount| int | ❌ | ❌ | ✅ | Amount of discount on article price |
 
+*[Back to top](#table-of-contest)*
+
 `GL_article_grouping_connection`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -145,6 +165,8 @@
 | group_id| int | ❌ | ✅ | ✅ | Referencing group |
 | sub_group_id | int | ❌ | ✅ | ✅ | Referencing sub-group |
 | article_id | int | ❌ | ✅ | ❌ | Referencing article |
+
+*[Back to top](#table-of-contest)*
 
 `GL_shops_list`
 -
@@ -159,6 +181,8 @@
 | mobile*| varchar | ❌ | ❌ | ✅ | Mobile number for workplace |
 | operating| boolean | ❌ | ❌ | ❌ | Shop working or not |
 
+*[Back to top](#table-of-contest)*
+
 `GL_inventory_list`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -172,6 +196,8 @@
 | mobile*| varchar | ❌ | ❌ | ✅ | Mobile number for workplace |
 | operating| boolean | ❌ | ❌ | ❌ | Shop working or not |
 
+*[Back to top](#table-of-contest)*
+
 `GL_working_hours`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -182,6 +208,8 @@
 | opening_hours| time| ❌ | ❌ | ✅ | Defines starting hours |
 | closing_hours| time | ❌ | ❌ | ✅ | Defines closing hours |
 | working | boolean | ❌ | ❌ | ❌ | Defines if place is open or not |
+
+*[Back to top](#table-of-contest)*
 
 `GL_corpo_buyers_list`
 -
@@ -203,6 +231,8 @@
 | UCID | varchar | ❌ | ❌ | ❌ | Unique Company Identification Number (MB) |
 | taxpayer | boolean | ❌ | ❌ | ❌ | Wether company is in tax system |
 
+*[Back to top](#table-of-contest)*
+
 `GL_access_level_accounts`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -214,6 +244,8 @@
 | password | varchar | ❌ | ❌ | ❌ | Worker's password, LOGIN |
 | is_admin | boolean | ❌ | ❌ | ❌ | Defines if user has admin privileges |
 | is_manager | boolean | ❌ | ❌ | ❌ | Defines if user has manager privileges |
+
+*[Back to top](#table-of-contest)*
 
 `GL_retail_costs`
 -
@@ -230,6 +262,8 @@
 | reference_number | varchar | ❌ | ❌ | ✅ | Unique number connecting payer and issuer |
 | payer_name | varchar | ❌ | ❌ | ❌ | Name of payer |
 
+*[Back to top](#table-of-contest)*
+
 `GL_retail_costs_types`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -237,6 +271,11 @@
 | id| int | ✅ | ❌ | ❌ | Auto-increment value |
 | service_name | varchar | ❌ | ❌ | ❌ | Name of the service that bill is referencing to |
 | service_bank_account_number | varchar | ❌ | ❌ | ✅ | Bank account of bill issuer |
+
+*[Back to top](#table-of-contest)*
+
+
+# Inventory tables
 
 `INV_state`
 -
@@ -249,6 +288,8 @@
 |purchase_price| double | ❌ | ❌ | ❌  | The price for which is that article paid |
 |selling_margin| double | ❌ | ❌ | ❌ | The percent that increases the price of specific article |
 
+*[Back to top](#table-of-contest)*
+
 `INV_procurement`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -259,6 +300,8 @@
 | creation_date| date| ❌ | ❌ | ❌  | Date when we created procurement |
 | realized| bool | ❌ | ❌ | ❌  | If procurement is done or still filling |
 
+*[Back to top](#table-of-contest)*
+
 `INV_procurement_items`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -267,6 +310,8 @@
 |procurement_id| int | ❌ | ✅ | ❌ | The reference to procurement |
 |article_id| int| ❌ | ✅ | ❌  | The reference to specific article  |
 |amount_number| double | ❌ | ❌ | ❌  | Order Amount |
+
+*[Back to top](#table-of-contest)*
 
 `INV_delivery`
 -
@@ -278,6 +323,8 @@
 |delivery_date| date | ❌ | ❌ | ❌  | Date when will be delivered |
 | realized| bool | ❌ | ❌ | ❌  | If delivery is done or still pending |
 
+*[Back to top](#table-of-contest)*
+
 `INV_delivery_items`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -286,6 +333,8 @@
 |shop_id| int | ❌ | ✅ | ❌ | The reference to procurement |
 |article_id| int| ❌ | ✅ | ❌  | Date when will be delivered |
 |amount_number| double | ❌ | ❌ | ❌  | Delivery amount  |
+
+*[Back to top](#table-of-contest)*
 
 `INV_suppliers_list`
 -
@@ -307,6 +356,11 @@
 | UCID | varchar | ❌ | ❌ | ❌ | Unique Company Identification Number (MB) |
 | taxpayer | boolean | ❌ | ❌ | ❌ | Wether company is in tax system |
 
+
+*[Back to top](#table-of-contest)*
+
+# Retail stores tables
+
 `RT_state`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -318,6 +372,8 @@
 | selling_price | double | ❌ | ❌ | ❌ | Price of article per unit |
 | discount | int | ❌ | ❌ | ✅ | Discount for article price (%) |
 | expiration_date | date | ❌ | ❌ | ✅ | Expiration date for article |
+
+*[Back to top](#table-of-contest)*
 
 `RT_fiscal_bills`
 -
@@ -337,6 +393,8 @@
 | TAX_amount | double | ❌ | ❌ | ❌ | Amount of money for TAX |
 | discount_amount | double | ❌ | ❌ | ✅ | Amount of money discounted |
 
+*[Back to top](#table-of-contest)*
+
 `RT_sold_goods`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -349,6 +407,8 @@
 | article_TAX | double | ❌ | ❌ | ❌ | Amount of TAX |
 | article_discount | double | ❌ | ❌ | ✅ | Amount of discount (in currency) |
 
+*[Back to top](#table-of-contest)*
+
 `RT_order_request`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -359,6 +419,8 @@
 | creation_date | date | ❌ | ❌ | ✅ | Date order has been created |
 | realized | bool | ❌ | ❌ | ❌ | If order request is ready or still in progress |
 
+*[Back to top](#table-of-contest)*
+
 `RT_order_request_items`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -367,6 +429,8 @@
 | request_id | int | ❌ | ✅ | ❌ | Referencing request order |
 | article_id | int | ❌ | ✅ | ❌ | Referencing article |
 | amount_number | double | ❌ | ❌ | ❌ | Amount of article needed |
+
+*[Back to top](#table-of-contest)*
 
 `RT_corpo_sell_invoice`
 -
@@ -386,6 +450,8 @@
 | discount_amount | double | ❌ | ❌ | ✅ | Amount of money discounted |
 | invoice_paid | bool | ❌ | ❌ | ❌ | If company has paid invoice |
 
+*[Back to top](#table-of-contest)*
+
 `RT_invoice_sold_items`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -398,6 +464,8 @@
 | article_TAX | double | ❌ | ❌ | ❌ | Amount of TAX |
 | article_discount | double | ❌ | ❌ | ✅ | Amount of discount (in currency) |
 
+*[Back to top](#table-of-contest)*
+
 `RT_corpo_fiscal_bill`
 -
 | Attribute Name | Data Type | Primary Key | Foreign Key | NULL | Description |
@@ -407,3 +475,5 @@
 | shop_id | int | ❌ | ✅ | ❌ | Referencing shop |
 | fiscal_bill_id | int | ❌ | ✅ | ❌ | Referencing issued bill |
 | date_time_issued | datetime | ❌ | ❌ | ❌ | Date and time cash bill was issued |
+
+*[Back to top](#table-of-contest)*
