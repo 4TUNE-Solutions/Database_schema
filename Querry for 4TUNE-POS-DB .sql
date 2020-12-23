@@ -283,7 +283,7 @@ ALTER TABLE `GL_article_grouping_connection` ADD FOREIGN KEY (`article_id`) REFE
 
 ALTER TABLE `GL_working_hours` ADD FOREIGN KEY (`shop_id`) REFERENCES `GL_shops_list` (`id`);
 
-ALTER TABLE `GL_shops_list` ADD FOREIGN KEY (`id`) REFERENCES `GL_retail_costs` (`shop_id`);
+ALTER TABLE `GL_retail_costs` ADD FOREIGN KEY (`shop_id`) REFERENCES `GL_shops_list` (`id`);
 
 ALTER TABLE `GL_retail_costs` ADD FOREIGN KEY (`type_of_pay`) REFERENCES `GL_retail_costs_types` (`id`);
 
