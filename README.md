@@ -28,7 +28,7 @@
 
 ## Table segments:
 - global
-- invertory
+- inventory
 - store
 <br />
 
