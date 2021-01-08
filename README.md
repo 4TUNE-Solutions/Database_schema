@@ -155,7 +155,7 @@
 | sub_group_color| varchar | ❌ | ❌ | ✅ | OPTIONAL: sorting articles by color |
 | discount_amount| int | ❌ | ❌ | ✅ | Amount of discount on article price |
 
-*[Back to top](#table-of-contest)*
+*[Back to top](#table-of-contents)*
 
 `GL_article_grouping_connection`
 -
